@@ -1,5 +1,9 @@
 I only put my 2 hours efforts. i also completed optional task.
 
+please also check new added files,
+BookingControllerTest.php
+JobObservers.php
+
 Orignal code from my point of view:
 1, validation missing
 2, santizing missing
