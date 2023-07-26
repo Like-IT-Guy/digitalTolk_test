@@ -65,12 +65,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $response = $this->repository->store($request->__authenticatedUser, $data);
-
-        return response($response);
-
+        return response($this->repository->store($request->__authenticatedUser, $request->all()));
     }
 
     /**
@@ -80,11 +75,7 @@ class BookingController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->all();
-        $cuser = $request->__authenticatedUser;
-        $response = $this->repository->updateJob($id, array_except($data, ['_token', 'submit']), $cuser);
-
-        return response($response);
+        return response($this->repository->updateJob($id, array_except($request->all(), ['_token', 'submit']), $request->__authenticatedUser));
     }
 
     /**
@@ -93,12 +84,7 @@ class BookingController extends Controller
      */
     public function immediateJobEmail(Request $request)
     {
-        $adminSenderEmail = config('app.adminemail');
-        $data = $request->all();
-
-        $response = $this->repository->storeJobEmail($data);
-
-        return response($response);
+        return response($this->repository->storeJobEmail($request->all()));
     }
 
     /**
@@ -108,11 +94,8 @@ class BookingController extends Controller
     public function getHistory(Request $request)
     {
         if($user_id = $request->get('user_id')) {
-
-            $response = $this->repository->getUsersJobsHistory($user_id, $request);
-            return response($response);
+            return response($this->repository->getUsersJobsHistory($user_id, $request));
         }
-
         return null;
     }
 
@@ -122,12 +105,7 @@ class BookingController extends Controller
      */
     public function acceptJob(Request $request)
     {
-        $data = $request->all();
-        $user = $request->__authenticatedUser;
-
-        $response = $this->repository->acceptJob($data, $user);
-
-        return response($response);
+        return response($this->repository->acceptJob($request->all(), $request->__authenticatedUser));
     }
 
     public function acceptJobWithId(Request $request)

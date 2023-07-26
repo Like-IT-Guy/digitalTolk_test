@@ -1,0 +1,11 @@
+I only put my 2 hours efforts. i also completed optional task.
+
+Orignal code from my point of view:
+1, validation missing
+2, santizing missing
+3, findorfail and firstorfail methods missing
+4, invalid date formate check missing
+5, request missing
+6, traits should be used instead of helpers
+7, status codes i.e: 422,404,500 check missing
+ 
